@@ -1,0 +1,61 @@
+DOCKER SWARM:
+CLUSTER 
+NODES
+CONTAINER
+APP
+
+C: CLUSTER
+N: NODE
+P: POD
+C: CONTAINER
+A: APPLICATION
+
+NOTE: k8s dont communicate with containers.
+it communicate with pods.
+
+COMPONENTS:
+MASTER NODE:
+1. API SERVER: its for communicating with cluster, it takes command executes and gives output.
+2. ETCD: its a DB od cluster, all the cluster info will store here.
+3. SCHEDULER: schedules pods on worker nodes, based on hardware resources.
+4. CONTROLLER: used to control the k8s objects.
+1. cloud controllers
+2. kube controllers
+
+WORKER NODE:
+KUBELET: its an agent used to communicate with master.
+KUBEPROXY: it deals with nlw.
+POD: its a group of containers.
+
+
+There are multiple ways to setup kubernetes cluster.
+
+1.SELF MANAGER K8'S CLUSTER
+a.mini kube (single node cluster)
+b.kubeadm(multi node cluster)
+c. KOPS
+
+2. CLOUD MANAGED K8'S CLUSTER
+a. AWS EKS
+b.AZURE AKS
+c.GCP GKS
+d.IBM IKE
+
+MINIKUBE:
+It is a tool used to setup single node cluster on K8's. 
+It contains API Servers, ETDC database and container runtime
+It is used for development, testing, and experimentation purposes on local. 
+Here Master and worker runs on same machine.
+It is a platform Independent.
+
+NOTE: But we dont implement this in real-time
+
+REQUIRMENTS:
+2 CPUs or more
+2GB of free memory
+20GB of free disk space
+Internet connection
+Container or virtual machine manager, such as: Docker.
+
+
+
