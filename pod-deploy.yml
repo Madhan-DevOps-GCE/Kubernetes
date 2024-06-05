@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myapp
+  name: myapp
+spec:
+  replicas: 12
+  selector:
+    matchLabels:
+      app: myapp
+  minReadySeconds: 30
+  strategy: 
+   type: RollingUpdate
+   rollingUpdate:
+     maxSurge: 2
+     maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - image: sreeharshav/rollingupdate:v5
+        name: testcontainer
+        resources:
+          requests:
+            memory: "500Mi"
+            cpu: "250m"
+          limits:
+            memory: "600Mi"
+            cpu: "500m"
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: nginx-deployment-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: nginx-deployment
